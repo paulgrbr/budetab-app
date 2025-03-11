@@ -1,0 +1,40 @@
+.user-item-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 12px;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--light-whitespace-a30);
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.user-item-container #arrow {
+  margin-left: auto;
+  margin-right: 10px;
+  height: 12px;
+}
+
+.checkbox {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.user-item-selected {
+  color: var(--light-primary-a40);
+}
+
+@media (prefers-color-scheme: dark) {
+  .user-item-container {
+    background-color: var(--dark-whitespace-a80);
+  }
+  .user-item-container #arrow {
+    content: url("/icons/arrow-right-light.svg");
+  }
+  .user-item-selected {
+    color: var(--dark-primary-a10);
+  }
+}

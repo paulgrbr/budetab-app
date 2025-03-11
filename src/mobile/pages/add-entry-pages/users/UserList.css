@@ -1,0 +1,15 @@
+.user-list-alpha-divider {
+  width: 100%;
+  background-color: var(--light-whitespace-a30);
+  color: var(--light-whitespace-a40);
+  font-size: 15px;
+  padding: 5px 15px;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .user-list-alpha-divider {
+    background-color: var(--dark-whitespace-a80);
+  }
+}

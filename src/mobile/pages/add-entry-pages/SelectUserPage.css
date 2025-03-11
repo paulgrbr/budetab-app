@@ -1,0 +1,17 @@
+.user-page-content {
+  padding-top: 5px;
+}
+
+.user-page-subtitle {
+  color: var(--light-whitespace-a40);
+  font-size: 15px;
+  letter-spacing: 0px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .select-user-page-bg {
+    --background: var(--secondary-whitespace);
+    background-color: var(--secondary-whitespace);
+    outline: 5px solid var(--secondary-whitespace);
+  }
+}

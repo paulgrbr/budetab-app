@@ -1,0 +1,15 @@
+:root {
+  --dark-whitespace-a0: #ffffff;
+  --dark-whitespace-a40: #676d75;
+  --dark-whitespace-a60: #191c36;
+  --dark-whitespace-a80: #101023;
+  --dark-whitespace-a90: #060613;
+  --dark-whitespace-a100: #000000;
+  --dark-primary-a5: #cec2ff;
+  --dark-primary-a10: #ad66fd;
+  --dark-primary-a20: #d255ff;
+  --dark-primary-a40: #7900ff;
+  --dark-primary-a60: rgb(104, 26, 124);
+  --dark-primary-a70: #3f3f56;
+  --dark-primary-a100: #0b0a41;
+}

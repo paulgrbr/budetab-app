@@ -1,0 +1,66 @@
+.history-content-section {
+  background-color: var(--secondary-whitespace);
+}
+
+.history-calendar-selector {
+  padding-top: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.history-total-hline {
+  width: 100%;
+  display: block;
+  border: solid 0.75px var(--light-primary-a100);
+  margin: 20px 0;
+  height: 0.01px;
+  opacity: 25%;
+}
+
+.history-total-text {
+  display: inline-flex;
+  gap: 5px;
+  width: 100%;
+  justify-content: end;
+  color: var(--light-primary-a100);
+  margin-bottom: 15vh;
+  min-height: 35vh;
+  font-size: 16px;
+}
+
+.history-total-text p {
+  opacity: 30%;
+}
+
+.history-no-entries-text {
+  color: var(--light-primary-a100);
+  margin: 1rem 0;
+  opacity: 30%;
+  display: inline-flex;
+  gap: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .history-total-hline {
+    border-color: var(--dark-primary-a5);
+    opacity: 80%;
+  }
+  .history-total-text {
+    color: var(--dark-primary-a5);
+    opacity: 80%;
+  }
+  .history-no-entries-text {
+    color: var(--dark-primary-a5);
+    opacity: 60%;
+  }
+
+  .history-total-text p {
+    opacity: 100%;
+  }
+}
+
+.loading {
+  opacity: 15%;
+  outline-color: grey;
+}

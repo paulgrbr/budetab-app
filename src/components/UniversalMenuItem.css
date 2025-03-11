@@ -1,0 +1,68 @@
+.universal-button {
+  width: 100%;
+  background-color: var(--light-whitespace-a0);
+  border-radius: 16px;
+  padding: 0.7rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  letter-spacing: 0;
+  margin: 0.5rem 0;
+  animation: slide-in 0.7s ease-in-out;
+}
+
+.universal-button #title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.universal-button #subtitle {
+  font-size: 13px;
+  color: var(--light-whitespace-a40);
+}
+
+.universal-button #arrow {
+  margin-left: auto;
+  margin-right: 0;
+  height: 16px;
+}
+
+.universal-button-icon {
+  height: 55px;
+  width: 55px;
+  border-radius: 10px;
+  background-color: var(--light-primary-a5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.universal-button-icon svg {
+  max-width: 30px;
+  max-height: 30px;
+  height: 28px;
+  width: auto;
+}
+
+.universal-button:hover {
+  scale: 0.99;
+  transition: 0.2s ease-in-out;
+  background-color: var(--light-primary-a5);
+}
+
+@media (prefers-color-scheme: dark) {
+  .universal-button {
+    background-color: var(--dark-whitespace-a80);
+  }
+  .universal-button #arrow {
+    content: url("/icons/arrow-right-light.svg");
+  }
+  .universal-button-icon {
+    background-color: rgba(198, 53, 255, 0.196);
+    color: rgb(184, 108, 235);
+  }
+  .universal-button:hover {
+    background-color: var(--dark-whitespace-a100);
+  }
+}

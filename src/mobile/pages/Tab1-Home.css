@@ -1,0 +1,67 @@
+.subtitle {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.balance-card {
+  width: 100%;
+  background-color: var(--dark-primary-a40);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-content: space-between;
+  color: #ffffff;
+}
+
+.balance-card > span {
+  display: flex;
+  align-items: start;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: right;
+}
+
+.balance-card-balance {
+  margin-top: 1.2rem;
+  font-weight: 900;
+  font-size: 36px;
+  letter-spacing: 0.4px;
+}
+
+.balance-card-title {
+  font-size: 20px;
+  letter-spacing: 0.6px;
+}
+
+.balance-card-last-payment-title {
+  font-size: 14px;
+  letter-spacing: 0.4px;
+}
+
+.balance-card-wallet-icon {
+  width: 140px;
+  pointer-events: none;
+}
+
+.balance-card-wallet-icon-container {
+  opacity: 40%;
+  position: relative;
+  transform: translateY(-50%);
+  height: 2rem;
+  z-index: 0;
+}
+
+.home-content-section {
+  background-color: var(--secondary-whitespace);
+  height: 100vh;
+}
