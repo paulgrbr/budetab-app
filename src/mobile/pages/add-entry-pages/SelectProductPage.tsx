@@ -1,3 +1,8 @@
+import "./SelectProductPage.css";
+import "../../../Mobile.css";
+
+import { Haptics, ImpactStyle } from "@capacitor/haptics";
+import { Button, Input, Tabs } from "@chakra-ui/react";
 import {
   IonBackButton,
   IonButtons,
@@ -7,16 +12,11 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-
-import "./SelectProductPage.css";
-import { Button, Input, Tabs } from "@chakra-ui/react";
-import { InputGroup } from "@/components/ui/input-group";
 import { Search } from "lucide-react";
+import React, { useState } from "react";
 
-import "../../../Mobile.css";
 import ProductItemBig from "@/components/ProductItemBig";
-import { useState } from "react";
-import { Haptics, ImpactStyle } from "@capacitor/haptics";
+import { InputGroup } from "@/components/ui/input-group";
 
 const SelectProductPage: React.FC = () => {
   const hapticsImpactLight = async () => {
@@ -108,7 +108,7 @@ const SelectProductPage: React.FC = () => {
               </Tabs.List>
             </div>
             {tabCategories.map((category, index) => (
-              <Tabs.Content value={category.toLowerCase()}>
+              <Tabs.Content key={index} value={category.toLowerCase()}>
                 <div className="select-product-page-item-container select-product-page-bg ion-padding">
                   <div className="select-product-page-category-header">
                     <p>{category}</p>

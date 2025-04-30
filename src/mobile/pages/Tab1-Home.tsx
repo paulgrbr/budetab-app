@@ -5,14 +5,37 @@ import {
   IonContent,
   IonHeader,
   IonPage,
+  IonRefresher,
+  IonRefresherContent,
   IonTitle,
   IonToolbar,
+  RefresherEventDetail,
 } from "@ionic/react";
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useState } from "react";
 
 import Wallet from "/icons/wallet.svg";
+import { getMyUser } from "@/services/dataService";
+import { useUserStore } from "@/stores/userStore";
 
 const Home: React.FC = () => {
+  const {
+    user,
+    refreshMyCachedProfilePicture,
+    assignMyProfilePictureFromCache,
+    setUser,
+  } = useUserStore();
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
+    setIsLoading(true);
+    const fetchedUser = await getMyUser();
+    setUser({ ...user, ...fetchedUser });
+    await refreshMyCachedProfilePicture();
+    await assignMyProfilePictureFromCache();
+    setIsLoading(false);
+    event.detail.complete();
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -20,16 +43,36 @@ const Home: React.FC = () => {
           <IonTitle>Home</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent fullscreen scrollEvents={true}>
+        <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+          <IonRefresherContent></IonRefresherContent>
+        </IonRefresher>
         <IonHeader collapse="condense">
           <IonToolbar>
             <div className="header ion-padding">
               <span>
                 <IonTitle size="large">Willkommen</IonTitle>
-                <h3 className="subtitle">Paul Gröber</h3>
+                <Skeleton
+                  loading={!(user.firstName && user.lastName) || isLoading}
+                  variant="shine"
+                  width="20ch"
+                >
+                  <h3 className="subtitle">
+                    {user.firstName && user.lastName
+                      ? user.firstName + " " + user.lastName
+                      : "NoName"}
+                  </h3>
+                </Skeleton>
               </span>
               <Avatar.Root size="xl" colorPalette="purple" variant="subtle">
-                <Avatar.Fallback name="Paul Gröber" />
+                <Avatar.Fallback
+                  name={
+                    user.firstName && user.lastName
+                      ? user.firstName + " " + user.lastName
+                      : ""
+                  }
+                />
+                <Avatar.Image src={user.profilePicture} />
               </Avatar.Root>
             </div>
           </IonToolbar>

@@ -16,7 +16,7 @@ ion-tab-bar {
 }
 
 .hide-tab-bar {
-  transition: 0.5s ease-in-out 0.3s;
+  transition: 0.5s ease-in-out;
   transform: translate(-50%, 15vh);
 }
 
@@ -75,4 +75,85 @@ ion-fab {
 ion-fab-button {
   font-size: 10px;
   --box-shadow: none;
+}
+
+.button-primary-style {
+  width: 100%;
+  border-radius: 10px;
+  background-color: var(--light-primary-a100);
+  color: #ffffff;
+}
+
+.button-secondary-style {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid var(--light-primary-a100);
+  color: var(--light-primary-a100);
+}
+
+.button-primary-style:hover:not(:disabled) {
+  opacity: 80%;
+}
+
+.button-secondary-style:hover:not(:disabled) {
+  opacity: 50%;
+}
+
+.ion-content-scroll-host {
+  transition: margin-bottom 300ms ease;
+}
+
+.button-tertiary-style {
+  width: 100%;
+  border-radius: 10px;
+  background-color: var(--light-whitespace-a20);
+}
+
+.top {
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: var(--light-whitespace-a0) solid 2px;
+}
+
+.middle {
+  border-radius: 0px;
+  border-bottom: var(--light-whitespace-a0) solid 1px;
+}
+
+.bottom {
+  border-radius: 0px 0px 10px 10px;
+}
+
+.button-tertiary-style:hover:not(:disabled) {
+  opacity: 80%;
+}
+
+.accordion-primary-style {
+  background-color: var(--light-whitespace-a20);
+  border-color: var(--light-whitespace-a0);
+}
+
+@media (prefers-color-scheme: dark) {
+  .button-primary-style {
+    background-color: #7900ff;
+  }
+
+  .button-secondary-style {
+    color: #7900ff;
+    border: 2px solid #7900ff;
+  }
+  .button-tertiary-style {
+    background-color: var(--dark-whitespace-a60);
+  }
+
+  .top {
+    border-bottom: var(--dark-whitespace-a80) solid 2px;
+  }
+
+  .middle {
+    border-bottom: var(--dark-whitespace-a80) solid 1px;
+  }
+  .accordion-primary-style {
+    background-color: var(--dark-whitespace-a60);
+    border-color: var(--dark-whitespace-a80);
+  }
 }

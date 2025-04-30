@@ -1,0 +1,68 @@
+.register-page-input-label {
+  font-size: 14px;
+  margin-top: 1rem;
+  align-self: flex-start;
+}
+
+.register-page-link {
+  border-bottom: 1px solid var(--light-primary-a40);
+  font-weight: 500;
+  margin: 10px 0;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.register-page-link:hover {
+  opacity: 80%;
+  border-bottom: 3px solid var(--light-primary-a40);
+  transition: 0.2s;
+}
+
+.register-page-form {
+  position: absolute;
+  width: 100%;
+  bottom: 2rem;
+  z-index: 11;
+}
+
+.register-page-title {
+  color: var(--light-primary-a40);
+  margin: 0;
+  font-weight: 700;
+  line-height: 1rem;
+  font-size: 22px;
+}
+
+.register-page-splash-container {
+  width: 150vw;
+  height: 50%;
+  position: absolute;
+  left: -30vw;
+  top: -28vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  opacity: 50%;
+}
+
+.register-page-splash-image {
+  width: 100%;
+}
+
+.register-page-back-button {
+  --color: #000000;
+  font-weight: 600;
+}
+@media (prefers-color-scheme: dark) {
+  .register-page-back-button {
+    --color: #ffffff;
+  }
+  .register-page-title {
+    color: var(--light-primary-a20);
+  }
+}
+
+.register-page-bg {
+  --background: transparent;
+}

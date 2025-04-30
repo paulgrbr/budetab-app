@@ -31,11 +31,14 @@
 .universal-button-icon {
   height: 55px;
   width: 55px;
+  min-height: 55px;
+  min-width: 55px;
   border-radius: 10px;
   background-color: var(--light-primary-a5);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #4e0b85;
 }
 
 .universal-button-icon svg {
@@ -45,7 +48,7 @@
   width: auto;
 }
 
-.universal-button:hover {
+.universal-button.touch-active {
   scale: 0.99;
   transition: 0.2s ease-in-out;
   background-color: var(--light-primary-a5);
@@ -62,7 +65,7 @@
     background-color: rgba(198, 53, 255, 0.196);
     color: rgb(184, 108, 235);
   }
-  .universal-button:hover {
-    background-color: var(--dark-whitespace-a100);
+  .universal-button.touch-active {
+    background-color: var(--dark-whitespace-a60);
   }
 }

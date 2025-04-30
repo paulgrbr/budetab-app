@@ -1,0 +1,32 @@
+@media (prefers-color-scheme: dark) {
+  .all-accounts-admin-page-bg {
+    --background: var(--secondary-whitespace);
+    background-color: var(--secondary-whitespace);
+    outline: 5px solid var(--secondary-whitespace);
+  }
+}
+
+.admin-page-accordion-title {
+  margin: 10px;
+  font-size: 16px;
+}
+
+.admin-page-accordion-summary {
+  padding: 10px;
+}
+
+.edit-account-admin-page-buttons {
+  justify-content: space-between;
+}
+
+.edit-account-admin-page-buttons-container {
+  position: sticky;
+  bottom: 2rem;
+  left: 0;
+  width: 100%;
+}
+
+.edit-account-admin-page-container {
+  padding-top: 30px;
+  background-color: var(--ion-background-color);
+}

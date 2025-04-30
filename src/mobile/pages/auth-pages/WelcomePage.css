@@ -1,0 +1,37 @@
+.welcome-page-title {
+  font-size: 36px;
+  margin-top: 2.5rem;
+}
+
+.welcome-page-splash-container {
+  width: 160vw;
+  height: 60%;
+  position: absolute;
+  left: -30vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -10;
+  flex-direction: column;
+  transform: rotate(-28deg);
+}
+
+.welcome-page-splash-image {
+  width: 100%;
+}
+
+.welcome-page-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.welcome-page-buttons {
+  position: fixed;
+  bottom: 2rem;
+  width: 100%;
+}
+
+.welcome-page-splash-tile {
+  height: 160px;
+  margin-right: 10px;
+}

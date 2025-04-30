@@ -1,0 +1,23 @@
+.admin-page-bg {
+  background-color: var(--secondary-whitespace);
+}
+
+.admin-page-category {
+  font-size: 15px;
+  color: var(--light-whitespace-a40);
+  margin-left: 5px;
+}
+
+.admin-page-tabbar-blocker {
+  height: 6rem;
+  background-color: var(--secondary-whitespace);
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    to top,
+    var(--secondary-whitespace) 60%,
+    #ffffff00 100%
+  );
+}

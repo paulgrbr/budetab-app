@@ -1,17 +1,26 @@
 import axios from "axios";
+import { SecureStoragePlugin } from "capacitor-secure-storage-plugin";
+
+import { useServiceStore } from "@/stores/serviceStore";
+
 import { AuthService } from "./authService";
 
-const instance = axios.create({
-  baseURL: "https://dev-budetab-api.budeberkach.de",
+const axiosInstance = axios.create({
+  baseURL: "https://budetab-api.budeberkach.de",
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: true,
 });
 
-instance.interceptors.request.use(
-  (config) => {
-    const token = AuthService.getAccessToken();
+const getBaseUrl = async () => {
+  const { activeService } = useServiceStore.getState();
+  return activeService.baseUrl;
+};
+
+axiosInstance.interceptors.request.use(
+  async (config) => {
+    config.baseURL = await getBaseUrl();
+    const token = await AuthService.getAccessToken();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -20,7 +29,7 @@ instance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-instance.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
@@ -30,15 +39,25 @@ instance.interceptors.response.use(
 
       try {
         const newAccessToken = await AuthService.refreshToken();
+        if (!newAccessToken) {
+          throw new Error("Failed to refresh token");
+        }
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
         return axios(originalRequest);
-      } catch (err) {
-        AuthService.logout();
-        window.location.href = "/login"; // Redirect to login on token expiration
+      } catch {
+        try {
+          await SecureStoragePlugin.remove({ key: "accessToken" });
+          await SecureStoragePlugin.remove({ key: "refreshToken" });
+          await SecureStoragePlugin.remove({ key: "user-permissions" });
+        } catch {
+          await localStorage.clear();
+        } finally {
+          window.location.href = "/welcome"; // Redirect to login on token expiration
+        }
       }
     }
     return Promise.reject(error);
   }
 );
 
-export default instance;
+export default axiosInstance;

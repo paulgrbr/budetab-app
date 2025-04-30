@@ -10,6 +10,7 @@
   font-size: 16px;
   font-weight: 600;
   margin: 5px 0;
+  border: 1px solid transparent;
 }
 
 .user-item-container #arrow {
@@ -27,6 +28,12 @@
   color: var(--light-primary-a40);
 }
 
+.user-item-container.touch-active {
+  background-color: var(--light-whitespace-a20);
+  scale: 0.985;
+  transition: scale 0.2s;
+}
+
 @media (prefers-color-scheme: dark) {
   .user-item-container {
     background-color: var(--dark-whitespace-a80);
@@ -37,4 +44,22 @@
   .user-item-selected {
     color: var(--dark-primary-a10);
   }
+  .user-item-container.touch-active {
+    background-color: var(--dark-whitespace-a60);
+  }
+}
+
+.user-item-fade-out {
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.5) 20%,
+    rgba(0, 0, 0, 0) 90%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.5) 20%,
+    rgba(0, 0, 0, 0) 90%
+  );
 }

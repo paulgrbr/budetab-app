@@ -1,7 +1,3 @@
-import { IonApp, setupIonicReact } from "@ionic/react";
-import { IonReactRouter } from "@ionic/react-router";
-import { useMediaQuery } from "@mui/material";
-
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
 import "@ionic/react/css/normalize.css";
@@ -13,16 +9,19 @@ import "@ionic/react/css/text-alignment.css";
 import "@ionic/react/css/text-transformation.css";
 import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
-
 /* Dark Mode */
 import "@ionic/react/css/palettes/dark.system.css";
+import "./global.css";
 
+import { IonApp, setupIonicReact } from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
+import { useMediaQuery } from "@mui/material";
+import React from "react";
+
+import { Provider } from "./components/ui/provider";
 // Mobile and Tablet Version
 import Mobile from "./Mobile";
 import Tablet from "./Tablet";
-
-import "./global.css";
-import { Provider } from "./components/ui/provider";
 
 setupIonicReact();
 

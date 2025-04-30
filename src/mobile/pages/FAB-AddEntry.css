@@ -45,9 +45,9 @@
   height: 100px;
   width: 100px;
   border-radius: 100%;
-  background-color: var(--light-primary-a100);
+  background-color: var(--light-primary-a5);
   border: solid 5px var(--light-whitespace-a0);
-  color: var(--light-primary-a10);
+  color: #4e0b85;
   font-size: 30px;
   display: flex;
   align-items: center;
@@ -70,8 +70,8 @@
 @media (prefers-color-scheme: dark) {
   .entry-page-me-avatar {
     border-color: var(--dark-whitespace-a80);
-    background-color: var(--dark-primary-a10);
-    color: var(--dark-whitespace-a0);
+    background-color: #33174e;
+    color: rgb(184, 108, 235);
   }
 }
 

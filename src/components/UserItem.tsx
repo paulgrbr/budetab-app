@@ -21,16 +21,45 @@ const UserItem: React.FC<UserItemProps> = ({
   onClick,
 }) => {
   const [checkboxSelected, setCheckboxSelected] = useState(false);
+  const [touchActive, setTouchActive] = useState(false);
+  let touchTimer: NodeJS.Timeout | null = null;
+
+  const handleTouchStart = () => {
+    touchTimer = setTimeout(() => {
+      setTouchActive(true);
+    }, 100); // 100ms threshold
+  };
+
+  const handleTouchEnd = () => {
+    if (touchTimer) {
+      clearTimeout(touchTimer);
+      touchTimer = null;
+    }
+    setTouchActive(false);
+  };
+
+  const handleOnClick = () => {
+    setTouchActive(true);
+    setTimeout(() => {
+      setTouchActive(false);
+    }, 400);
+  };
 
   return (
     <div
-      className="user-item-container"
+      className={`user-item-container ${
+        touchActive && !selectable ? "touch-active" : ""
+      }`}
       onClick={() => {
         onClick();
         if (selectable) {
           setCheckboxSelected(!checkboxSelected);
         }
       }}
+      onClickCapture={handleOnClick}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchEnd}
     >
       <Avatar.Root colorPalette="purple" size="lg" variant="subtle">
         <Avatar.Image src={picture} />

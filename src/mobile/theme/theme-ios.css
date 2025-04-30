@@ -72,6 +72,10 @@ ion-toolbar {
 }
 
 @media (prefers-color-scheme: dark) {
+  ion-toolbar {
+    --background: var(--secondary-whitespace);
+  }
+
   :root .chakra-skeleton {
     --start-color: #381d58;
     --end-color: #431874;
@@ -93,4 +97,59 @@ ion-back-button {
     --chakra-colors-gray-900: var(--dark-whitespace-a80) !important;
     --chakra-colors-gray-950: #ffffff !important;
   }
+}
+
+.custom-toast-error {
+  --background: #970023;
+  --color: #fdbbbb;
+  border-radius: 8px;
+  padding: 16px;
+  font-weight: 500;
+}
+
+.custom-toast-success {
+  --background: #008751;
+  --color: #bbfdd2;
+  border-radius: 8px;
+  padding: 16px;
+  font-weight: 500;
+}
+
+.modal-buttons ion-button {
+  --color: var(--light-primary-a40) !important;
+  padding: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .modal-toolbar {
+    --background: var(--dark-whitespace-a80);
+    --border-width: 0;
+    --ion-border-color: transparent;
+  }
+  .modal-content {
+    --background: var(--dark-whitespace-a80);
+  }
+}
+
+.select-style {
+  border: 1px solid #7900ff;
+  border-radius: 4px;
+  padding-left: 16px;
+}
+
+.select-style-list {
+  --select-selected-item-bg: var(--light-primary-a10);
+  --select-selected-item-color: var(--dark-whitespace-a0);
+}
+
+@media (prefers-color-scheme: dark) {
+  .select-style-list {
+    background-color: var(--dark-whitespace-a80);
+    --select-selected-item-bg: var(--dark-primary-a40);
+    --select-selected-item-color: var(--dark-whitespace-a0);
+  }
+}
+
+.ion-alert {
+  --ion-backdrop-color: rgba(19, 7, 23, 0.748);
 }

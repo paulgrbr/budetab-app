@@ -13,3 +13,10 @@
     background-color: var(--dark-whitespace-a80);
   }
 }
+
+.user-list-no-results {
+  text-align: center;
+  margin-top: 3rem;
+  font-weight: 500;
+  color: var(--dark-whitespace-a40);
+}

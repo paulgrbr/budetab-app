@@ -1,22 +1,57 @@
+import "./SelectUserPage.css";
+import "../../../Mobile.css";
+
+import { Input, Tabs } from "@chakra-ui/react";
 import {
   IonBackButton,
   IonButtons,
   IonContent,
   IonHeader,
   IonPage,
+  IonRefresher,
+  IonRefresherContent,
   IonTitle,
   IonToolbar,
+  RefresherEventDetail,
 } from "@ionic/react";
-
-import "./SelectUserPage.css";
-import { Input, Tabs } from "@chakra-ui/react";
-import { InputGroup } from "@/components/ui/input-group";
 import { Search } from "lucide-react";
+import React, { useEffect, useState } from "react";
 
-import "../../../Mobile.css";
+import { InputGroup } from "@/components/ui/input-group";
+import { getAllUsers } from "@/services/dataService";
+import { useAllUsersStore } from "@/stores/usersStore";
+
 import UserList from "./users/UserList";
 
 const SelectUserPage: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const { users, setUsers } = useAllUsersStore();
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      setIsLoading(true);
+      if (users.length === 0) {
+        const users = await getAllUsers();
+        setUsers(users);
+      }
+      setIsLoading(false);
+    };
+
+    fetchUsers();
+  }, []);
+
+  async function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
+    setIsLoading(true);
+    const users = await getAllUsers();
+    setUsers(users);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    event.detail.complete();
+  }
+
+
   return (
     <IonPage>
       <IonHeader>
@@ -24,18 +59,24 @@ const SelectUserPage: React.FC = () => {
           <IonButtons slot="start" style={{ paddingLeft: "12px" }}>
             <IonBackButton text="Zurück"></IonBackButton>
           </IonButtons>
-          <IonTitle>Benutzer wählen</IonTitle>
+          <IonTitle>Nutzer wählen</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen className="select-user-page-bg">
+        <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+          <IonRefresherContent></IonRefresherContent>
+        </IonRefresher>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large" className="ion-padding select-user-page-bg">
-              Für wen?
-            </IonTitle>
+            <div className="header ion-padding  select-user-page-bg">
+              <span>
+                <IonTitle size="large">Für wen?</IonTitle>
+                <p className="subtitle"></p>
+              </span>
+            </div>
           </IonToolbar>
         </IonHeader>
-        <div className="user-page-content ion-padding">
+        <div className="select-user-content ion-padding">
           <InputGroup
             flex="1"
             endElement={<Search height="20px" />}
@@ -47,6 +88,15 @@ const SelectUserPage: React.FC = () => {
               type="search"
               inputMode="search"
               enterKeyHint="done"
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  (e.target as HTMLInputElement).blur(); // Close keyboard
+                }
+              }}
             />
           </InputGroup>
           <div style={{ height: "5px" }}></div>
@@ -81,13 +131,30 @@ const SelectUserPage: React.FC = () => {
               </Tabs.Trigger>
             </Tabs.List>
             <Tabs.Content value="all">
-              <UserList selectable={false} />
+              <UserList
+                selectable={false}
+                users={users}
+                loading={isLoading}
+                searchTerm={searchTerm}
+              />
             </Tabs.Content>
             <Tabs.Content value="bude">
-              <UserList selectable={false} priceRanking="member" />
+              <UserList
+                selectable={false}
+                priceRanking="member"
+                users={users}
+                loading={isLoading}
+                searchTerm={searchTerm}
+              />
             </Tabs.Content>
             <Tabs.Content value="stammtisch">
-              <UserList selectable={false} priceRanking="regular" />
+              <UserList
+                selectable={false}
+                priceRanking="regular"
+                users={users}
+                loading={isLoading}
+                searchTerm={searchTerm}
+              />
             </Tabs.Content>
           </Tabs.Root>
         </div>
